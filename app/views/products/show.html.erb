@@ -1,4 +1,6 @@
+<% cache @product do %>
 <h1><%= @product.name %></h1>
+<% end %>
 <p>Created at: <%= @product.created_at %></p>
 
 <%= link_to "Back", products_path %>
