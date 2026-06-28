@@ -2,7 +2,12 @@
 <%= image_tag @product.featured_image if @product.featured_image.attached? %>
 <h1><%= @product.name %></h1>
 <%= @product.description %>
-<p>Last updated at: <%= @product.created_at %></p>
+<% if @product.inventory_count.zero? %>
+  <p>Out of stock</p>
+<% else %>
+  <p><%= "only #{@product.inventory_count} left" unless @product.inventory_count > 5 %></p>
+<% end %>
+<p>Last updated at: <%= @product.updated_at %></p>
 <% end %>
 
 <%= link_to "Back", products_path %>
