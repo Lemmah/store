@@ -1,4 +1,5 @@
 <% cache @product do %>
+<%= image_tag @product.featured_image if @product.featured_image.attached? %>
 <h1><%= @product.name %></h1>
 <%= @product.description %>
 <p>Last updated at: <%= @product.created_at %></p>
