@@ -8,3 +8,7 @@ joe:
   product: short
   email: test@joe.test
 
+bern:
+  product: tshirt
+  email: bern@bern.test
+
