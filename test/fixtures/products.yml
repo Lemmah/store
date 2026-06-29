@@ -1,7 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+tshirt:
+  name: T-Shirt
+  inventory_count: 22
 
-two:
-  name: MyString
+short:
+  name: Short
+  inventory_count: 4
