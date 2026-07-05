@@ -1,0 +1,11 @@
+<h1>Profile Management</h1>
+
+<section>
+  <p>First Name: <%= @user.first_name %></p>
+  <p>Last Name: <%= @user.last_name %></p>
+  <p>Email Address: <%= @user.email_address %></p>
+  <div>
+    <%= link_to "Change Password", settings_password_path %>
+    <%= link_to "Update Profile", edit_settings_profile_path %>
+  </div>
+</section>
