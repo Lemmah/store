@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   end
   resource :unsubscribe, only: [ :show ]
   root "products#index"
+
+  namespace :settings do
+    resource :password, only: [ :show, :update ]
+  end
 end

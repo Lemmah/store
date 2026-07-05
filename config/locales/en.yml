@@ -35,3 +35,8 @@ en:
   product_mailer:
     in_stock:
       subject: Product back in stock!
+
+  activerecord:
+    attributes:
+      user:
+        password_challenge: "Current password"
