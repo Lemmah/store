@@ -1,4 +1,4 @@
-class Settings::ProfilesController < ApplicationController
+class Settings::ProfilesController < Settings::BaseController
   before_action :set_user
   def show
   end
