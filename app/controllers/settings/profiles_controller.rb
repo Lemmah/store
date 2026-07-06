@@ -22,6 +22,6 @@ class Settings::ProfilesController < Settings::BaseController
   end
 
   def edit_profile_params
-    params.expect(user: [ :first_name, :last_name, :email_address ])
+    params.expect(user: [ :first_name, :last_name ])
   end
 end

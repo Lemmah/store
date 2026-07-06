@@ -33,10 +33,15 @@ Rails.application.routes.draw do
   root "products#index"
 
   namespace :settings do
+    resource :email, only: [ :show, :update ]
     resource :password, only: [ :show, :update ]
     resource :profile, only: [ :show, :edit, :update ]
     resource :user, only: [ :destroy ]
 
     root to: redirect("/settings/profile")
+  end
+
+  namespace :email do
+    resources :confirmations, param: :token, only: [ :show ]
   end
 end
