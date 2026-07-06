@@ -24,8 +24,6 @@
   </head>
 
   <body>
-    <div class="notice"><%= flash[:notice] %></div>
-    <div class="alert"><%= flash[:alert] %></div>
     <nav class="navbar">
       <%= link_to "Home", root_path %>
       <% if authenticated? %>
@@ -36,7 +34,8 @@
         <%= link_to "Login", new_session_path %>
       <% end %>
     </nav>
-
+    <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+    <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
     <main>
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>

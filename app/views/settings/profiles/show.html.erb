@@ -7,5 +7,7 @@
   <div>
     <%= link_to "Change Password", settings_password_path %>
     <%= link_to "Update Profile", edit_settings_profile_path %>
+    <%= button_to "Delete my account", settings_user_path, method: :delete,
+        data: { turbo_confirm: "Are you sure? All your data will be lost. This action cannot be undone."} %>
   </div>
 </section>
