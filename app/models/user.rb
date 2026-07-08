@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
+  attr_readonly :admin
+
   generates_token_for :email_confirmation, expires_in: 7.days do
     unconfirmed_email
   end
