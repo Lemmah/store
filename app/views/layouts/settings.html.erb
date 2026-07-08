@@ -5,6 +5,10 @@
       <%= link_to "Profile", settings_profile_path %>
       <%= link_to "Email", settings_email_path %>
       <%= link_to "Password", settings_password_path %>
+      <% if Current.user.admin? %>
+        <h4>Store Settings</h4>
+        <%= link_to "Users", store_users_path %>
+      <% end %>   
     </nav>
 
     <div>

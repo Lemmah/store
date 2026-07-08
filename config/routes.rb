@@ -44,4 +44,8 @@ Rails.application.routes.draw do
   namespace :email do
     resources :confirmations, param: :token, only: [ :show ]
   end
+
+  namespace :store do
+    resources :users
+  end
 end

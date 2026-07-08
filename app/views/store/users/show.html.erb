@@ -1,0 +1,13 @@
+<h3><%= @user.full_name %></h3>
+
+<p>Email: <%= @user.email_address %></p>
+
+<p>Role: <%= @user.admin? ? "Admin" : "System User" %></p>
+
+<p>Created at: <%= @user.created_at %></p>
+
+<div>
+  <%= link_to "Edit", edit_store_user_path(@user) %>
+  <%= button_to "Delete", store_user_path(@user), method: :delete,
+      data: { turbo_confirm: "Are you sure? This cannot be undone." } %>
+</div>
