@@ -51,6 +51,7 @@ section.settings {
 
 section.settings nav {
   width: 200px;
+  flex-shrink: 0;
 }
 
 section.settings nav a {

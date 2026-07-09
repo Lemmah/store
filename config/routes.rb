@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   # patch "/products/:id", to: "products#update"
 
   # delete "/products/:id", to: "products#destroy"
-  resources :products do
+  resources :products, only: [ :index, :show ] do
     resources :subscribers, only: [ :create ]
   end
   resource :unsubscribe, only: [ :show ]
@@ -47,5 +47,8 @@ Rails.application.routes.draw do
 
   namespace :store do
     resources :users
+    resources :products
+
+    root to: redirect("/store/products")
   end
 end
