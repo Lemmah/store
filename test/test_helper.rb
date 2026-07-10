@@ -4,6 +4,7 @@ require "rails/test_help"
 require_relative "test_helpers/session_test_helper"
 
 module ActiveSupport
+  include SessionTestHelper
   class TestCase
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
