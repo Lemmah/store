@@ -9,5 +9,6 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal [ user.unconfirmed_email ], mail.to
     assert_equal [ "from@example.com" ], mail.from
     assert_match "Confirm your email", mail.body.encoded
+    assert_match "/email/confirmations", mail.body.encoded
   end
 end
