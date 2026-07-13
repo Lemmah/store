@@ -23,5 +23,6 @@ class WishlistsControllerTest < ActionDispatch::IntegrationTest
 
     wishlist = user.wishlists.find_by!(name: "Test Wishlist 123")
     assert_redirected_to wishlist_path(wishlist)
+    assert_equal "Your wishlist was created successfully.", flash[:notice]
   end
 end

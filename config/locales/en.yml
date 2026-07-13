@@ -28,6 +28,9 @@
 #       enabled: "ON"
 
 en:
+  time:
+    formats:
+      friendly: "%B %d, %Y"
   hello: "Hello world"
   products:
     index:

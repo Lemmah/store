@@ -1,11 +1,12 @@
 class WishlistsController < ApplicationController
-  allow_unauthenticated_access only: [ :show ]
+  allow_unauthenticated_access only: %i[ show ]
+  before_action :set_wishlist, only: %i[ edit update destroy ]
   def index
     @wishlists = Current.user.wishlists
   end
 
   def show
-    @wishlist = Wishlist.find(params[:id])
+    @wishlist = Wishlist.includes(:products).find(params[:id])
   end
 
   def new
@@ -21,6 +22,21 @@ class WishlistsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @wishlist.update(wishlist_params)
+      redirect_to @wishlist, status: :see_other,
+        notice: "Your wishlist has been updated successfully."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+  end
+
   private
 
   def wishlist_params
@@ -28,5 +44,6 @@ class WishlistsController < ApplicationController
   end
 
   def set_wishlist
+    @wishlist = Current.user.wishlists.find(params[:id])
   end
 end

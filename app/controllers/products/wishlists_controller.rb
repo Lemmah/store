@@ -4,7 +4,7 @@ class Products::WishlistsController < ApplicationController
 
   def create
     @wishlist.wishlist_products.create(product: @product)
-    redirect_to @product, notice: "#{@product.name} added to wishlist."
+    redirect_to @wishlist, notice: "#{@product.name} added to wishlist #{@wishlist.name}."
   end
 
   private
