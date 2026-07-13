@@ -35,6 +35,8 @@ class WishlistsController < ApplicationController
   end
 
   def destroy
+    @wishlist.destroy
+    redirect_to wishlists_path, status: :see_other
   end
 
   private
