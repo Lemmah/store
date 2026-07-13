@@ -2,10 +2,10 @@
 
 one:
   user: one
-  name: MyString
+  name: Test Wishlist
   products_count: 1
 
 two:
   user: two
-  name: MyString
+  name: Test Wishlist2
   products_count: 1

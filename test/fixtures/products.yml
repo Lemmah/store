@@ -7,3 +7,11 @@ tshirt:
 short:
   name: Short
   inventory_count: 0
+
+one:
+  name: Pajamas
+  inventory_count: 0
+
+two:
+  name: Marvin
+  inventory_count: 0
