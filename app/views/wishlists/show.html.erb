@@ -19,5 +19,7 @@
   <div>
     <%= link_to it.product.name, product_path(it.product) %>
     <small>Added <%= l it.created_at, format: :long %></small>
+    <%= button_to "Remove", [@wishlist, it], method: :delete, data: {
+      turbo_confirm: "Are you sure?" } %>
   </div>
 <% end %>
