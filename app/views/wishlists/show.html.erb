@@ -8,6 +8,11 @@
     data: { turbo_confirm: "Are you sure?" }%>
 <% end %>
 
+<%= tag.button "Copy to clipboard", data: {
+    controller: :clipboard, action: "clipboard#copy",
+    clipboard_text_value: wishlist_url(@wishlist)
+  } %>
+
 <h3><%= pluralize @wishlist.products_count, "Product" %></h3>
 
 <% @wishlist.wishlist_products.each do %>
