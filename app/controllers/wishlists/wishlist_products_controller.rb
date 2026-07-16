@@ -2,8 +2,18 @@ class Wishlists::WishlistProductsController < ApplicationController
   before_action :set_wishlist
   before_action :set_wishlist_product
 
+  def update
+    new_wishlist = Current.user.wishlists.find(params[:new_wishlist_id])
+    if @wishlist_product.update(wishlist: new_wishlist)
+      redirect_to @wishlist, status: :see_other,
+        notice: "#{@wishlist_product.product.name} has been moved to #{new_wishlist.name}."
+    else
+      redirect_to @wishlist, status: :see_other,
+        alert: "#{@wishlist_product.product.name} is already on #{new_wishlist.name}."
+    end
+  end
+
   def destroy
-    Rails.logger.debug params.inspect
     @wishlist_product.destroy
     redirect_to @wishlist, status: :see_other,
       notice: "#{@wishlist_product.product.name} removed from wishlist."
