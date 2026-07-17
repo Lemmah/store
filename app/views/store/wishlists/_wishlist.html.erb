@@ -1,0 +1,5 @@
+<li>
+  <%= link_to wishlist.name, [:store, wishlist] %> by
+  <%= link_to wishlist.user.full_name, [:store, wishlist.user] %>
+  <small>(<%= pluralize wishlist.products_count, "product" %>)</small>
+</li>
