@@ -4,6 +4,6 @@ class Store::WishlistsController < Store::BaseController
   end
 
   def show
-    @wishlist = Wishlist.find_by(id: params[:id])
+    @wishlist = Wishlist.includes(:products).find_by(id: params[:id])
   end
 end

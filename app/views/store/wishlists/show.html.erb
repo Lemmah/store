@@ -1,1 +1,9 @@
 <h1><%= @wishlist.name %></h1>
+<h4>By <%= link_to @wishlist.user.full_name, [:store, @wishlist.user] %></h4>
+<h4><%= pluralize @wishlist.products_count, "product" %></h4>
+<ul>
+  <% @wishlist.products.each do |product| %>
+    <li><%= link_to product.name, [:store, product] %></li>
+  <% end %>
+</ul>
+
