@@ -8,6 +8,10 @@ short:
   name: Short
   inventory_count: 0
 
+shoes:
+  name: Shoes
+  inventory_count: 0
+
 one:
   name: Pajamas
   inventory_count: 0
