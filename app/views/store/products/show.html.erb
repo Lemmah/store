@@ -12,4 +12,13 @@
     <%= button_to "Delete", store_product_path(@product), method: :delete,
         data: { turbo_confirm: "Are you sure? This action cannot be undone."} %>
   </section>
+
+  <section>
+    <%= link_to pluralize(@product.wishlists_count, "Wishlist"),
+      store_wishlists_path(product_id: @product)
+    %>
+    <%= link_to pluralize(@product.subscribers.count, "Subscriber"),
+      store_subscribers_path(product_id: @product)
+    %>
+  </section>
 </section>
