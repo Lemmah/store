@@ -1,0 +1,7 @@
+<p>
+  <%= link_to subscriber.email, [:store, subscriber] %>
+  subscribed to
+  <%= link_to subscriber.product.name, [:store, subscriber.product] %>
+  on
+  <%= l subscriber.created_at, format: :long %>
+</p>

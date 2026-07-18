@@ -1,0 +1,12 @@
+<h1><%= @subscriber.email %></h1>
+
+<p>
+  Subscribed to
+  <%= link_to @subscriber.product.name, [:store, @subscriber.product] %>
+  on
+  <%= l @subscriber.created_at, format: :long %>
+</p>
+
+<%= button_to "Remove", [:store, @subscriber], method: :delete,
+  data: { turbo_confirm: "Are you sure?" }
+%>
