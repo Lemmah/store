@@ -36,7 +36,8 @@ class WishlistsController < ApplicationController
 
   def destroy
     @wishlist.destroy
-    redirect_to wishlists_path, status: :see_other
+    redirect_to wishlists_path, status: :see_other,
+      alert: "#{@wishlist.name} was deleted."
   end
 
   private
