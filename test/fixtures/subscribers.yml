@@ -3,12 +3,15 @@
 lemmah:
   product: tshirt
   email: test@lemmah.test
-
-joe:
-  product: short
-  email: test@joe.test
+  created_at: <%= 1.day.ago %>
 
 bern:
   product: tshirt
   email: bern@bern.test
+  created_at: <%= 1.week.ago %>
+
+joe:
+  product: short
+  email: test@joe.test
+  created_at: <%= 1.month.ago %>
 
