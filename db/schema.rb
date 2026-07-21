@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_13_074143) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_21_171211) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -49,12 +49,32 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_13_074143) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "product_reviews", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "product_id", null: false
+    t.integer "star_rating"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["product_id"], name: "index_product_reviews_on_product_id"
+    t.index ["user_id"], name: "index_product_reviews_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "inventory_count", default: 0
     t.string "name"
     t.datetime "updated_at", null: false
     t.integer "wishlists_count", default: 0
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "product_id", null: false
+    t.integer "star_rating"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -106,6 +126,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_13_074143) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "product_reviews", "products"
+  add_foreign_key "product_reviews", "users"
+  add_foreign_key "reviews", "products"
+  add_foreign_key "reviews", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "subscribers", "products"
   add_foreign_key "wishlist_products", "products"
