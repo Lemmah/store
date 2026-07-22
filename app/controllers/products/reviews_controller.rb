@@ -1,20 +1,18 @@
 class Products::ReviewsController < ApplicationController
+  before_action :set_product
   def index
-    @reviews = Review.includes(:user)
-                .order(created_at: :desc)
-                .where(product_id: params[:product_id])
+    @reviews = @product.reviews.includes(:user).newest_first
   end
 
   def new
-    @review = Current.user.reviews.new(product_id: params[:product_id])
+    @review = @product.reviews.new
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @review = @product.reviews.new(review_params)
     @review.user = Current.user
     if @review.save
-      redirect_to product_reviews_path(params[:product_id]),
+      redirect_to product_reviews_path(@product),
         status: :see_other
     else
       render :new, status: :unprocessable_entity,
@@ -26,5 +24,9 @@ class Products::ReviewsController < ApplicationController
 
   def review_params
     params.expect(review: [ :star_rating, :comment ])
+  end
+
+  def set_product
+    @product = Product.find(params[:product_id])
   end
 end
