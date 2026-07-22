@@ -13,10 +13,10 @@ class Products::ReviewsController < ApplicationController
     @review.user = Current.user
     if @review.save
       redirect_to product_reviews_path(@product),
-        status: :see_other
+        status: :see_other, notice: "Review saved successfully."
     else
-      render :new, status: :unprocessable_entity,
-        alert: "Review could not be saved."
+      flash[:alert].now = "Review could not be saved."
+      render :new, status: :unprocessable_entity
     end
   end
 
