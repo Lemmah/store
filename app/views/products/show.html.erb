@@ -6,6 +6,13 @@
   <section class="product-info">
     <% cache @product do %>
       <h1><%= @product.name %></h1>
+      <h4>
+        ⭐️ <%= @product.reviews.average(:star_rating) || 0.0 %>
+        (<%=
+          link_to pluralize(@product.reviews.count, "review"),
+          product_reviews_path(@product)
+        %>)
+      </h4>
       <%= @product.description %>
     <% end %>
 
