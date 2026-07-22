@@ -1,2 +1,22 @@
 <h1>Submit a review for <%= @review.product.name %></h1>
 
+<%= form_with model: [@review.product, @review] do |form| %>
+
+  <div>
+    <fieldset>
+      <legend>Star Rating</legend>
+
+      <% (1..5).each do |rating| %>
+        <%= form.radio_button :star_rating, rating %>
+        <%= form.label :"star_rating_#{rating}", "#{'★' * rating}#{'☆' * (5 - rating)}" %><br>
+      <% end %>
+    </fieldset>
+  </div>
+
+  <div>
+    <%= form.label :comment %>
+    <%= form.rich_textarea :comment %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
