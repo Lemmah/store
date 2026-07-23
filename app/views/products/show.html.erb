@@ -9,7 +9,7 @@
       <h4>
         ⭐️ <%= format "%.1f", @product.reviews.average(:star_rating) || 0.0 %>
         (<%=
-          link_to pluralize(@product.reviews.count, "review"),
+          link_to pluralize(@product.reviews_count, "review"),
           product_reviews_path(@product)
         %>)
       </h4>
