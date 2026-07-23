@@ -1,7 +1,7 @@
 <h1>
   <%= pluralize @reviews.count, "review" %>
   for
-  <%= @product.name %>
+  <%= link_to @product.name, [ @product ] %>
 </h1>
 
 <p>

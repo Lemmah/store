@@ -7,7 +7,7 @@
       <legend>Star Rating</legend>
 
       <% (1..5).each do |rating| %>
-        <%= form.radio_button :star_rating, rating %>
+        <%= form.radio_button :star_rating, rating, required: rating == 1 %>
         <%= form.label :"star_rating_#{rating}", "#{'★' * rating}#{'☆' * (5 - rating)}" %><br>
       <% end %>
     </fieldset>
