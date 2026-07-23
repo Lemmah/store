@@ -1,4 +1,5 @@
 class Products::ReviewsController < ApplicationController
+  allow_unauthenticated_access only: [ :index ]
   before_action :set_product
   def index
     @reviews = @product.reviews.includes(:user).newest_first
