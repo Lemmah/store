@@ -2,7 +2,8 @@
   <br>
   <strong><%= review.user.full_name %></strong>
   <p>
-    <%= "★" * review.star_rating %><%= "☆" * (5 - review.star_rating) %>
+    <% star_rating = review.star_rating || 0 %>
+    <%= "★" * star_rating %><%= "☆" * (5 - star_rating) %>
     <small><%= time_ago_in_words(review.created_at) %> ago</small>
   </p>
   <p><%= review.comment %></p>
