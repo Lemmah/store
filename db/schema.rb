@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_23_095436) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_24_163834) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_23_095436) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.decimal "average_star_rating", precision: 2, scale: 1, default: "0.0"
     t.datetime "created_at", null: false
     t.integer "inventory_count", default: 0
     t.string "name"

@@ -7,7 +7,7 @@
     <% cache @product do %>
       <h1><%= @product.name %></h1>
       <h4>
-        ⭐️ <%= format "%.1f", @product.reviews.average(:star_rating) || 0.0 %>
+        ⭐️ <%= format "%.1f", @product.average_star_rating %>
         (<%=
           link_to pluralize(@product.reviews_count, "review"),
           product_reviews_path(@product)
