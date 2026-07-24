@@ -3,6 +3,7 @@
 tshirt:
   name: T-Shirt
   inventory_count: 22
+  reviews_count: 1
 
 short:
   name: Short

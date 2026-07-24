@@ -13,8 +13,6 @@ class Review < ApplicationRecord
     return if transaction_include_any_action?([ :update ]) &&
       !saved_change_to_star_rating?
 
-    product.update!(
-      average_star_rating: product.reviews.average(:star_rating) || 0
-    )
+    product.recalculate_average_star_rating!
   end
 end
