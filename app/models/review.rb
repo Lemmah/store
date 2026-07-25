@@ -4,15 +4,22 @@ class Review < ApplicationRecord
 
   scope :newest_first, -> { order(created_at: :desc) }
 
-  after_commit :recalculate_average_star_rating,
-    on: %i[ create update destroy ]
+  after_create_commit :increment_product_star_ratings_sum
+  after_destroy_commit :decrement_product_star_ratings_sum
+  after_update_commit :update_product_star_ratings_sum,
+    if: :saved_change_to_star_rating?
 
   private
 
-  def recalculate_average_star_rating
-    return if transaction_include_any_action?([ :update ]) &&
-      !saved_change_to_star_rating?
+  def increment_product_star_ratings_sum
+    product.increment!(:star_ratings_sum, star_rating)
+  end
 
-    product.recalculate_average_star_rating!
+  def decrement_product_star_ratings_sum
+    product.decrement!(:star_ratings_sum, star_rating)
+  end
+
+  def update_product_star_ratings_sum
+    product.increment!(:star_ratings_sum, star_rating - star_rating_previously_was.to_f)
   end
 end

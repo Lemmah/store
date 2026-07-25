@@ -10,9 +10,11 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :inventory_count, numericality: { greater_than_or_equal_to: 0 }
 
-  def recalculate_average_star_rating!
-    update!(
-      average_star_rating: reviews.average(:star_rating) || 0
-    )
+  def average_star_rating
+    (star_ratings_sum / reviews_count).round(1)
+  end
+
+  def reset_star_ratings_sum
+    update!(star_ratings_sum: reviews.sum(:star_rating))
   end
 end

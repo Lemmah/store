@@ -63,3 +63,9 @@ section.settings nav {
 section.settings nav a {
   display: block;
 }
+
+.trix-content pre {
+  background-color: black;
+  color: gainsboro;
+}
+
