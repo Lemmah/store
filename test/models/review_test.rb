@@ -9,7 +9,7 @@ class ReviewTest < ActiveSupport::TestCase
   test "creating a review increases product star ratings sum" do
     assert_difference -> { @product.reload.star_ratings_sum }, 4 do
       @product.reviews.create!(
-        user_id: @user.id,
+        user: @user,
         star_rating: 4
       )
     end
@@ -17,7 +17,7 @@ class ReviewTest < ActiveSupport::TestCase
 
   test "destroying a review decreases product star ratings sum" do
     review = @product.reviews.new(
-      user_id: users(:one).id,
+      user: @user,
       star_rating: 5
     )
     review.save!
@@ -28,7 +28,7 @@ class ReviewTest < ActiveSupport::TestCase
 
   test "decreasing a review rating decreases product star ratings sum" do
     review = @product.reviews.new(
-      user_id: @user.id,
+      user: @user,
       star_rating: 5
     )
     review.save!
@@ -39,7 +39,7 @@ class ReviewTest < ActiveSupport::TestCase
 
   test "increasing a review rating increases product star ratings sum" do
     review = @product.reviews.new(
-      user_id: @user.id,
+      user: @user,
       star_rating: 3
     )
     review.save!
