@@ -1,6 +1,9 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :product, counter_cache: true
+  has_many_attached :images
+
+  validates :star_rating, presence: true, numericality: { in: 1..5, only_integer: true }
 
   scope :newest_first, -> { order(created_at: :desc) }
 

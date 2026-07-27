@@ -11,7 +11,6 @@ class Products::ReviewsController < ApplicationController
 
   def create
     @review = @product.reviews.new(review_params)
-    @review.user = Current.user
     if @review.save
       redirect_to product_reviews_path(@product),
         status: :see_other, notice: "Review saved successfully."
@@ -24,7 +23,8 @@ class Products::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.expect(review: [ :star_rating, :comment ])
+    params.expect(review: [ :star_rating, :comment, images: [] ])
+          .with_defaults(user: Current.user)
   end
 
   def set_product

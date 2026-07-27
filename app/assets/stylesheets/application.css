@@ -69,3 +69,49 @@ section.settings nav a {
   color: gainsboro;
 }
 
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/* Hide text visually but not from screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.rating {
+  display: flex;
+}
+
+/* Mute all stars by default */
+.rating label {
+  color: lightgray;
+}
+
+/* Highlight the selected/focused/hovered star and all previous ones */
+.rating input:is(:checked, :focus) + label,
+.rating label:has(~ input:is(:checked, :focus)),
+.rating label:hover,
+.rating label:has(~ input + label:hover) {
+  color: gold;
+}
+
+/* Outline visible focused inputs */
+.rating input:focus-visible + label {
+  outline: .2em solid;
+  outline-offset: 2px;
+}
+
