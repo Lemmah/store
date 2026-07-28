@@ -11,6 +11,7 @@ class Product < ApplicationRecord
   validates :inventory_count, numericality: { greater_than_or_equal_to: 0 }
 
   def average_star_rating
+    return 0 if reviews_count.zero?
     (star_ratings_sum / reviews_count).round(1)
   end
 
